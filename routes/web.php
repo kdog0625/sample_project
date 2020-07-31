@@ -11,8 +11,10 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('tweets/index');
 });
 
-Route::get('tweets', 'HelloController@index');
