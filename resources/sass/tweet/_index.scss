@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+.header{
+  height: 80px;
+  background-color: #73a9ff;
+  position: fixed;
+  border-bottom: 1px solid gray;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(#f7faff 0%, #f0fff4 50%, #fffee2 100%);
+  padding: 1em;
+}

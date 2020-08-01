@@ -1,0 +1,8 @@
++--------+----------+----------------+--------------+--------------------------------------------+--------------+
+| Domain | Method   | URI            | Name         | Action                                     | Middleware   |
++--------+----------+----------------+--------------+--------------------------------------------+--------------+
+|        | GET|HEAD | /              |              | Closure                                    | web          |
+|        | GET|HEAD | api/user       |              | Closure                                    | api,auth:api |
+|        | GET|HEAD | tweets         | tweets.index | App\Http\Controllers\TweetController@index | web          |
+|        | GET|HEAD | tweets/{tweet} | tweets.show  | App\Http\Controllers\TweetController@show  | web          |
++--------+----------+----------------+--------------+--------------------------------------------+--------------+
