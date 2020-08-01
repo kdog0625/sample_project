@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Route::get('/', function () {
-//     return view('tweets/index');
+//     return view('welcome');
 // });
+
+Route::get('/', function () {
+    return view('tweets/index');
+});
 Auth::routes();
 
 Route::group(['prefix'=>'tweet','middleware'=>'auth'],function(){
