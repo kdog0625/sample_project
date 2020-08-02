@@ -1,4 +1,3 @@
-
 <div class="header">
   新規投稿
 </div>
@@ -14,6 +13,9 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+                    <a href="{{ url('/tweets/create') }}">Home</a>
                 </div>
             @endif
+            
+                
             </div>

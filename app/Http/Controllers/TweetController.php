@@ -13,7 +13,6 @@ class TweetController extends Controller
      */
     public function index()
     {
-        //
         return view('tweets.index');
     }
 
@@ -24,7 +23,7 @@ class TweetController extends Controller
      */
     public function create()
     {
-        //
+        return view('tweets.create');
     }
 
     /**
