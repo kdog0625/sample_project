@@ -1,22 +1,46 @@
-<div class="header">
-  新規投稿
-</div>
-<div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/tweet/create') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+@extends('layouts.app')
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                    <a href="{{ url('/tweet/create') }}">Home</a>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <!-- <a href="{{ route('tweets.create')}}">新規登録</a> -->
+                    <form method="GET" action="{{ route('tweets.create') }}">
+                    <button type="submit" class="btn btn-primary">新規登録
+                    </button>
+                    </form>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">氏名</th>
+                        <th scope="col">タイトル</th>
+                        <th scope="col">登録日時</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($tweets as $tweet)
+                        <tr>
+                        <th>{{$tweet->id}}</th>
+                        <td>{{$tweet->name}}</td>
+                        <td>{{$tweet->title}}</td>
+                        <td>{{$tweet->created_at}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    </table>
                 </div>
-            @endif
-           
-                
             </div>
- 
+        </div>
+    </div>
+</div>
+@endsection
