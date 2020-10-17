@@ -22,7 +22,7 @@ class TweetController extends Controller
         //以下の場合はDBの値を全て取得できる(エロくアント ORマッパー)
         // $tweet=Tweet::all();
         //クエリビルダ
-        $tweets=DB::table('tweets')
+        $tweets = DB::table('tweets')
         ->select('id','name','title','created_at')
         ->orderBy('created_at', 'asc')
         ->get();
@@ -76,6 +76,36 @@ class TweetController extends Controller
     public function show($id)
     {
         //
+        $tweet=Tweet::find($id);
+
+        if($tweet->gender===0){
+            $gender='男性';
+        }
+        if($tweet->gender===1){
+            $gender='女性';
+        }
+
+        if($tweet->age===1){
+            $age='~19歳';
+        }
+        if($tweet->age===2){
+            $age='20歳~29歳';
+        }
+        if($tweet->age===3){
+            $age='30歳~39歳';
+        }
+        if($tweet->age===4){
+            $age='40歳~49歳';
+        }
+        if($tweet->age===5){
+            $age='50歳~59歳';
+        }
+        if($tweet->age===6){
+            $age='60歳~';
+        }
+
+        return view('tweets.show',
+        compact('tweet','gender','age'));
     }
 
     /**
@@ -87,6 +117,9 @@ class TweetController extends Controller
     public function edit($id)
     {
         //
+        $tweet=Tweet::find($id);
+        return view('tweets.edit',
+        compact('tweet'));
     }
 
     /**
@@ -99,6 +132,20 @@ class TweetController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tweet=Tweet::find($id);
+        //インスタンス化したものを矢印で代入する
+        $tweet->name=$request->input('name');
+        $tweet->title=$request->input('title');
+        $tweet->email=$request->input('email');
+        $tweet->url=$request->input('url');
+        $tweet->gender=$request->input('gender');
+        $tweet->age=$request->input('age');
+        $tweet->contact=$request->input('contact');
+
+        //保存はsaveというメソッド関数を使う
+        $tweet->save();
+        //保存した後に強制的に最初の画面に戻す
+        return redirect('tweet/index ');
     }
 
     /**
@@ -110,5 +157,8 @@ class TweetController extends Controller
     public function destroy($id)
     {
         //
+        $tweet=Tweet::find($id);
+        $tweet->delete();
+        return redirect('tweet/index');
     }
 }

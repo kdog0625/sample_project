@@ -25,6 +25,7 @@
                         <th scope="col">氏名</th>
                         <th scope="col">タイトル</th>
                         <th scope="col">登録日時</th>
+                        <th scope="col">詳細</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,7 @@
                         <td>{{$tweet->name}}</td>
                         <td>{{$tweet->title}}</td>
                         <td>{{$tweet->created_at}}</td>
+                        <td><a href="{{ route('tweets.show',['id' => $tweet->id ]) }}">詳細を見る</a></td>
                         </tr>
                     @endforeach
                     </tbody>
