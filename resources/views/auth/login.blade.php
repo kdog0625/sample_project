@@ -1,3 +1,4 @@
+<!-- layouts.appファイルの読み込みを行う -->
 @extends('layouts.app')
 
 @section('content')
