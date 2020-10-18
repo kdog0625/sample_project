@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 //ModelのTweet.phpを呼び出して保存する
 use App\Models\Tweet;
+use App\Services\CheckFormData;
 
 class TweetController extends Controller
 {
@@ -78,31 +79,11 @@ class TweetController extends Controller
         //
         $tweet=Tweet::find($id);
 
-        if($tweet->gender===0){
-            $gender='男性';
-        }
-        if($tweet->gender===1){
-            $gender='女性';
-        }
+        $gender=CheckFormData::checkGender($tweet);
+        $age=CheckFormData::checkAge($tweet);
+        
 
-        if($tweet->age===1){
-            $age='~19歳';
-        }
-        if($tweet->age===2){
-            $age='20歳~29歳';
-        }
-        if($tweet->age===3){
-            $age='30歳~39歳';
-        }
-        if($tweet->age===4){
-            $age='40歳~49歳';
-        }
-        if($tweet->age===5){
-            $age='50歳~59歳';
-        }
-        if($tweet->age===6){
-            $age='60歳~';
-        }
+        
 
         return view('tweets.show',
         compact('tweet','gender','age'));
