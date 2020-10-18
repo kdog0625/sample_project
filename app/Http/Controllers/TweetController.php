@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 //ModelのTweet.phpを呼び出して保存する
 use App\Models\Tweet;
 use App\Services\CheckFormData;
+use App\Http\Requests\StoreTweet;
 
 class TweetController extends Controller
 {
@@ -48,8 +49,8 @@ class TweetController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //Requestクラス(Requestはインスタンス化したもの)を使ってデータを持ってくる事ができる。
-    public function store(Request $request)
+   
+    public function store(StoreTweet $request)
     {
         //Tweetのインスタンス化作成(これによりTweetを読み込ませる)
         $tweet=new Tweet;
